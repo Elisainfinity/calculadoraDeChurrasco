@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+   /* background-image: linear-gradient(to right, rgb(0, 0, 0), #012E40); */
+    background-color: #012E40;
+
+}
+
+@media (max-width: 800px) {
+    body {
+        margin: 20%;
+
+
+
+    }
+}
+
+label,
+input,
+button {
+    display: block;
+    margin: 10px 0;
+
+
+}
+
+#box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+
+}
+
+.bebidas {
+    display: flex;
+    flex-direction: column;
+    background-color: #3E768C;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 15px;
+    width: 100%;
+    height: 30%;
+    text-align: left;
+
+}
+
+.comidas {
+    display: flex;
+    flex-direction: column;
+    background-color: #3E768C;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 15px;
+    width: 100%;
+    height: 30%;
+    text-align: left;
+}
+
+.boxQuantidades {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .boxQuantidades {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+
+
+
+    }
+}
+
+.boxPessoas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boxResultado {
+    display: flex;
+    flex-direction: column;
+    background-color: #024959;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 15px;
+    width: 100%;
+    height: 30%;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    background-image: linear-gradient(to right, rgb(100, 22, 156)5, #024959);
+    width: 100%;
+    align-items: center;
+    padding: 16px;
+    margin: 16px;
+    color: #024959;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+}
