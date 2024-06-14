@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Churrasco</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- <link href="https://cdn.tailwindcss.com"> -->
+</head>
+
+<body>
+    <div id="box" class="">
+        <div class="flex flex-wrap">
+            <div class="boxPessoas">
+                <h1>Calculadora de Churrasco</h1>
+        
+                <label for="adultosBebem">Número de adultos que bebem:</label>
+                <input type="number" id="adultosBebem" value="10">
+        
+                <label for="adultosNaoBebem">Número de adultos que não bebem:</label>
+                <input type="number" id="adultosNaoBebem" value="10">
+        
+                <label for="criancas">Número de crianças:</label>
+                <input type="number" id="criancas" value="10">
+            </div>
+        
+        
+            <div class="boxQuantidades">
+                <div class="bebidas">
+                    <h2>Bebidas</h2>
+                    <label for="cervejaPorPessoa">Quantidade de cerveja por pessoa (litros):</label>
+                    <input type="number" id="cervejaPorPessoa" step="0.1" value="2" required>
+        
+                    <label for="refrigerantePorPessoa">Quantidade de refrigerante por pessoa (litros):</label>
+                    <input type="number" id="refrigerantePorPessoa" step="0.1" value="1" required>
+        
+                    <label for="aguaPorPessoa">Quantidade de água por pessoa (litros):</label>
+                    <input type="number" id="aguaPorPessoa" step="0.1" value="1" required>
+        
+                    <label for="sucoPorPessoa">Quantidade de suco por pessoa (litros):</label>
+                    <input type="number" id="sucoPorPessoa" step="0.1" value="0.5" required>
+                </div>
+        
+                <div class="comidas">
+                    <h2>Comidas</h2>
+                    <label for="carnePorPessoa">Quantidade de carne por pessoa (kg):</label>
+                    <input type="number" id="carnePorPessoa" step="0.1" value="0.5" required>
+        
+                    <label for="linguicaPorPessoa">Quantidade de linguiça por pessoa (kg):</label>
+                    <input type="number" id="linguicaPorPessoa" step="0.1" value="0.5" required>
+        
+                    <label for="paoAlhoPorPessoa">Quantidade de pão de alho por pessoa (unidades):</label>
+                    <input type="number" id="paoAlhoPorPessoa" value="2" required>
+        
+                    <label for="queijoCoalhoPorPessoa">Quantidade de queijo coalho por pessoa (unidades):</label>
+                    <input type="number" id="queijoCoalhoPorPessoa" value="1" required>
+                </div>
+            </div>     
+        </div>
+        
+    
+        
+    
+        
+        <button id="calcularBtn" class="button" type="button">Calcular</button>
+    
+    
+        <div class="boxResultado">
+            <h2>Resultados:</h2>
+            <p>Cerveja necessária: <span id="resultadoCerveja"></span> litros</p>
+            <p>Refrigerante necessário: <span id="resultadoRefrigerante"></span> litros</p>
+            <p>Água necessária: <span id="resultadoAgua"></span> litros</p>
+            <p>Suco necessário: <span id="resultadoSuco"></span> litros</p>
+            <p>Carne necessária: <span id="resultadoCarne"></span> kg</p>
+            <p>Linguiça necessária: <span id="resultadoLinguica"></span> kg</p>
+            <p>Pão de alho necessário: <span id="resultadoPaoAlho"></span> unidades</p>
+            <p>Queijo coalho necessário: <span id="resultadoQueijoCoalho"></span> unidades</p>
+    
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('calcularBtn').addEventListener('click', function () {
+            // Obter os valores dos inputs
+            var adultosBebem = parseInt(document.getElementById('adultosBebem').value);
+            var adultosNaoBebem = parseInt(document.getElementById('adultosNaoBebem').value);
+            var criancas = parseInt(document.getElementById('criancas').value);
+
+            var cervejaPorPessoa = parseFloat(document.getElementById('cervejaPorPessoa').value);
+            var refrigerantePorPessoa = parseFloat(document.getElementById('refrigerantePorPessoa').value);
+            var aguaPorPessoa = parseFloat(document.getElementById('aguaPorPessoa').value);
+            var sucoPorPessoa = parseFloat(document.getElementById('sucoPorPessoa').value);
+
+            var carnePorPessoa = parseFloat(document.getElementById('carnePorPessoa').value);
+            var linguicaPorPessoa = parseFloat(document.getElementById('linguicaPorPessoa').value);
+            var paoAlhoPorPessoa = parseInt(document.getElementById('paoAlhoPorPessoa').value);
+            var queijoCoalhoPorPessoa = parseInt(document.getElementById('queijoCoalhoPorPessoa').value);
+
+            // Verificar se os números são válidos
+            if (isNaN(adultosBebem) || isNaN(adultosNaoBebem) || isNaN(criancas) ||
+                isNaN(cervejaPorPessoa) || isNaN(refrigerantePorPessoa) || isNaN(aguaPorPessoa) || isNaN(sucoPorPessoa) ||
+                isNaN(carnePorPessoa) || isNaN(linguicaPorPessoa) || isNaN(paoAlhoPorPessoa) || isNaN(queijoCoalhoPorPessoa)) {
+                alert('Por favor, insira valores válidos.');
+                return;
+            }
+
+            // Calcular a quantidade de bebidas necessárias
+            var totalCerveja = adultosBebem * cervejaPorPessoa;
+            var totalRefrigerante = (adultosNaoBebem + criancas) * refrigerantePorPessoa;
+            var totalAgua = (adultosBebem + adultosNaoBebem + criancas) * aguaPorPessoa;
+            var totalSuco = (adultosNaoBebem + criancas) * sucoPorPessoa;
+
+            // Calcular a quantidade de comidas necessárias
+            var totalCarne = (adultosBebem + adultosNaoBebem + criancas) * carnePorPessoa;
+            var totalLinguica = (adultosBebem + adultosNaoBebem + criancas) * linguicaPorPessoa;
+            var totalPaoAlho = (adultosBebem + adultosNaoBebem + criancas) * paoAlhoPorPessoa;
+            var totalQueijoCoalho = (adultosBebem + adultosNaoBebem + criancas) * queijoCoalhoPorPessoa;
+
+            // Exibir os resultados
+            document.getElementById('resultadoCerveja').textContent = totalCerveja.toFixed(2);
+            document.getElementById('resultadoRefrigerante').textContent = totalRefrigerante.toFixed(2);
+            document.getElementById('resultadoAgua').textContent = totalAgua.toFixed(2);
+            document.getElementById('resultadoSuco').textContent = totalSuco.toFixed(2);
+            document.getElementById('resultadoCarne').textContent = totalCarne.toFixed(2);
+            document.getElementById('resultadoLinguica').textContent = totalLinguica.toFixed(2);
+            document.getElementById('resultadoPaoAlho').textContent = totalPaoAlho;
+            document.getElementById('resultadoQueijoCoalho').textContent = totalQueijoCoalho;
+        });
+    </script>
+</body>
+
+</html>
